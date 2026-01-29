@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getGoogleSheetsClient, getSpreadsheetId } from "@/lib/google-sheets";
+import { getGoogleSheetsClient, getSpreadsheetId } from "@/lib/google/sheets";
 import { formatDate } from "@/lib/utils";
 
 /**

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getGoogleSheetsClient, getSpreadsheetId } from "@/lib/google-sheets";
+import { getGoogleSheetsClient, getSpreadsheetId } from "@/lib/google/sheets";
 
 /**
  * 검색 옵션 데이터를 가져오는 API 핸들러

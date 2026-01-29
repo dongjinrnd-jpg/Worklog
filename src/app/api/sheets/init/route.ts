@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { initializeSpreadsheet, validateSpreadsheetStructure } from '@/lib/createSheets';
+import { initializeSpreadsheet, validateSpreadsheetStructure } from '@/lib/google/initialize';
 
 /**
  * 스프레드시트 초기화 API
