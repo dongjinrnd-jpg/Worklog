@@ -40,12 +40,41 @@ export async function getGoogleSheetsClient() {
  */
 export async function getSpreadsheetId(): Promise<string> {
   const spreadsheetId = process.env.GOOGLE_SPREADSHEET_ID;
-  
+
   if (!spreadsheetId) {
     throw new Error("스프레드시트 ID 환경 변수가 설정되지 않았습니다.");
   }
-  
+
   return spreadsheetId;
+}
+
+/**
+ * API 연결을 테스트하는 함수
+ * 스프레드시트 기본 정보를 가져와서 연결 상태 확인
+ */
+export async function testConnection() {
+  try {
+    const sheets = await getGoogleSheetsClient();
+    const spreadsheetId = await getSpreadsheetId();
+
+    // 스프레드시트 메타데이터 가져오기
+    const response = await sheets.spreadsheets.get({
+      spreadsheetId,
+    });
+
+    console.log('연결 성공! 스프레드시트 제목:', response.data.properties?.title);
+    return {
+      success: true,
+      sheetTitle: response.data.properties?.title,
+      sheets: response.data.sheets?.map((sheet: { properties?: { title?: string } }) => sheet.properties?.title),
+    };
+  } catch (error) {
+    console.error('API 연결 테스트 실패:', error);
+    return {
+      success: false,
+      error: (error as Error).message,
+    };
+  }
 }
 
 /**

@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { testConnection } from '@/lib/googleSheets';
+import { testConnection } from '@/lib/google/sheets';
 
 /**
  * Google Sheets API 연결을 테스트하는 API 라우트
